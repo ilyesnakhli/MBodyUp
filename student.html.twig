@@ -1,0 +1,53 @@
+{% extends 'Mbodyup/base.front.html.twig' %}
+{% block body %}
+<h1>list des etudients</h1>
+{{ form(fromSearch) }}
+<a href="{{ path('ajout') }}">ajouter</a>
+
+<table style="size: A5" border="1">
+
+
+    <tr>
+        <td>NCE</td>
+        <td>username</td>
+        <td>Email</td>
+        <td>Action</td>
+    </tr>
+    {% for i in tabStudent %}
+        <tr>
+            <td>{{ i.nce }}</td>
+            <td>{{ i.username }}</td>
+            <td>{{ i.email }}</td>
+            <td>
+               <a href="{{ path('show',{"nce":i.nce}) }}">ShowMore</a>
+                <a href="{{ path('updateClassroom1',{"nce":i.nce}) }}">UpDate</a>
+                <a href="{{ path('remove',{"nce":i.nce}) }}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<h1>list student ordered by email</h1>
+<table border="1">
+
+
+    <tr>
+        <td>NCE</td>
+        <td>username</td>
+        <td>Email</td>
+        <td>Action</td>
+    </tr>
+    {% for i in StudentByEmail %}
+        <tr>
+            <td>{{ i.nce }}</td>
+            <td>{{ i.username }}</td>
+            <td>{{ i.email }}</td>
+            <td>
+                <a href="{{ path('show',{"nce":i.nce}) }}">ShowMore</a>
+                <a href="{{ path('updateClassroom1',{"nce":i.nce}) }}">UpDate</a>
+                <a href="{{ path('remove',{"nce":i.nce}) }}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
